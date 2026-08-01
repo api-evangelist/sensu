@@ -1,7 +1,17 @@
 aid: sensu
 name: Sensu
-description: Sensu is a company surfaced as a portfolio company of battery-ventures and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Sensu (Sensu by Sumo Logic) is an observability pipeline that delivers monitoring
+  as code across multi-cloud and hybrid environments. Sensu Go codifies monitoring
+  workflows into declarative, versionable configuration and exposes a backend REST
+  API (core/v2 plus namespaced and cluster-wide enterprise APIs) for managing checks,
+  events, entities, filters, handlers, mutators, pipelines, assets, silences, roles,
+  and users. It integrates with Nagios, StatsD, Telegraf, and Prometheus, automates
+  registration and de-registration of servers, containers, services, and functions,
+  and drives self-healing and automated diagnosis from bare metal to Kubernetes. The
+  platform ships the sensuctl command-line interface, an open-source Go codebase, and
+  role-based access control, with JWT access tokens and persistent API keys for
+  authentication and OIDC single sign-on for operators.
 url: https://raw.githubusercontent.com/api-evangelist/sensu/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +19,112 @@ x-backed-by:
 - battery-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
+image: https://sensu.io/img/sensu-logo.png
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Monitoring
+- Observability
+- Infrastructure
+- DevOps
+- Metrics
+- Events
+- Alerting
+- Monitoring as Code
+- Kubernetes
+apis:
+- name: Sensu Go Backend REST API
+  description: >-
+    The Sensu Go backend REST API for managing observability resources: checks,
+    events, entities, filters, handlers, mutators, hooks, pipelines, assets,
+    silences, namespaces, roles, role bindings, cluster roles, API keys, and users.
+    Core endpoints follow /api/core/v2/namespaces/<namespace>; enterprise endpoints
+    follow /api/enterprise/<group>/v2. Authenticates with JWT access tokens (via
+    /auth) or persistent API keys (Authorization: Key <uuid>). Supports limit/continue
+    pagination, labelSelector/fieldSelector filtering, and Etag conditional requests.
+  humanURL: https://docs.sensu.io/sensu-go/latest/api/
+  baseURL: https://docs.sensu.io/sensu-go/latest/api/
+  tags:
+  - Monitoring
+  - Observability
+  - REST
+  properties:
+  - type: Documentation
+    url: https://docs.sensu.io/sensu-go/latest/
+  - type: APIReference
+    url: https://docs.sensu.io/sensu-go/latest/api/
+  - type: Authentication
+    url: authentication/sensu-authentication.yml
+  - type: CLI
+    url: cli/sensu-cli.yml
+  - type: Packages
+    url: packages/sensu-packages.yml
+  - type: SDKs
+    url: packages/sensu-packages.yml
+  - type: Conventions
+    url: conventions/sensu-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/sensu-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/sensu-changelog.yml
+  - type: Conformance
+    url: conformance/sensu-conformance.yml
+  - type: DataModel
+    url: data-model/sensu-data-model.yml
+  - type: MCPServer
+    url: mcp/sensu-mcp.yml
+common:
+- type: DomainSecurity
+  url: security/sensu-domain-security.yml
+- type: Website
+  url: https://sensu.io
+- type: DeveloperPortal
+  url: https://docs.sensu.io/sensu-go/latest/
+- type: Documentation
+  url: https://docs.sensu.io/sensu-go/latest/
+- type: APIReference
+  url: https://docs.sensu.io/sensu-go/latest/api/
+- type: GettingStarted
+  url: https://docs.sensu.io/sensu-go/latest/operations/deploy-sensu/install-sensu/
+- type: Support
+  url: https://discourse.sensu.io
+- type: Blog
+  url: https://sensu.io/blog
+- type: GitHubOrganization
+  url: https://github.com/sensu
+- type: Pricing
+  url: https://sensu.io/pricing
+- type: SignUp
+  url: https://account.sensu.io/users/sign_up
+- type: Login
+  url: https://account.sensu.io/
+- type: TermsOfService
+  url: https://www.sumologic.com/terms-conditions/
+- type: PrivacyPolicy
+  url: https://www.sumologic.com/privacy-statement/
+- type: LLMsTxt
+  url: llms/sensu-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1

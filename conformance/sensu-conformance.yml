@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/api/
+standards:
+- id: jwt-bearer-auth
+  conforms: true
+  evidence: /auth issues short-lived JWT access tokens presented as Authorization Bearer
+- id: api-key-auth
+  conforms: true
+  evidence: persistent API keys via Authorization Key <uuid> header
+- id: openid-connect
+  conforms: true
+  evidence: OIDC single sign-on supported for operators (e.g. Microsoft Entra ID)
+- id: rbac
+  conforms: true
+  evidence: roles/clusterroles + role bindings scoped by namespace
+- id: fips-140-3
+  conforms: true
+  evidence: FIPS 140-3 compliance with strict mode added in 6.14.0
+- id: cursor-pagination
+  conforms: true
+  evidence: limit/continue params with Sensu-Continue response header
+- id: http-conditional-requests
+  conforms: true
+  evidence: Etag headers with If-Match/If-None-Match conditional PATCH
+- id: oauth2
+  conforms: false
+  evidence: authorization is RBAC, not OAuth2 scope flows
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use standard HTTP status codes with plain JSON, not application/problem+json
+- id: rest
+  conforms: true
+  evidence: resource-oriented JSON REST API under /api/core/v2

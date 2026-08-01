@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/release-notes/
+scheme: semver
+current_version: 6.14.2
+notes: >-
+  Recent window of Sensu Go backend release notes. Dates are as published on the
+  release-notes page; highlights summarized from the same source.
+entries:
+- version: 6.14.2
+  date: '2026-06-23'
+  type: patch
+  highlights:
+  - Security patches and dependency upgrades (Go 1.26.0 to 1.26.3)
+  - Fixed excessive etcd warning logs in non-customized deployments
+  - WebSocket library upgrade; DigiCert code signing for Windows packages
+- version: 6.14.1
+  type: patch
+  highlights:
+  - Fixed WebSocket handshake compatibility in mixed-version deployments
+  - Corrected ANSI formatting on the Event Summary page
+- version: 6.14.0
+  type: minor
+  breaking: false
+  highlights:
+  - Fallback pipeline type for failed executions
+  - Automatic cleanup of unused agent runtime assets
+  - AWS Secrets Manager support
+  - FIPS 140-3 compliance with strict mode
+  - Dynamic logging to change log level without a restart
+- version: 6.13.1
+  type: patch
+  highlights:
+  - Resolved silence-creation reliability issues
+  - Fixed Docker UID mapping on cgroups v2 systems
+  - Corrected OIDC integration with Microsoft Entra ID
+- version: 6.13.0
+  type: minor
+  breaking: false
+  highlights:
+  - Added token-expiry configuration variables
+  - Enhanced silence handling
+  - Multiple dependency updates
+- version: 6.12.0
+  type: minor
+  breaking: false
+  highlights:
+  - Change passwords in the web UI
+  - Backend configuration for certificate revocation checks
+  - Support for Ubuntu 24.04 LTS and Debian 13

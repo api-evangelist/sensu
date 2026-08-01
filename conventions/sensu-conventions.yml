@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/api/
+summary: >-
+  Cross-cutting request/response conventions for the Sensu Go backend REST API,
+  captured from the API reference. Covers authentication style, pagination,
+  filtering, conditional requests, versioning, the request-body size limit, and the
+  response envelope. Cross-links authentication/, lifecycle/, and data-model/.
+authentication:
+  style: bearer-token-or-api-key
+  detail: authentication/sensu-authentication.yml
+pagination:
+  style: cursor
+  request_params: [limit, continue]
+  response:
+    continue_token_header: Sensu-Continue
+  description: >-
+    List endpoints accept a limit query parameter and a continue query parameter.
+    Responses that are truncated return a Sensu-Continue header whose value is passed
+    back as the continue parameter to fetch the next page.
+filtering:
+  params: [labelSelector, fieldSelector]
+  tier: commercial
+  description: >-
+    Responses can be filtered with labelSelector and fieldSelector query parameters
+    (a commercial / licensed feature) to select resources by label or field values.
+conditional_requests:
+  supported: true
+  mechanism: etag
+  request_headers: [If-Match, If-None-Match]
+  response_headers: [Etag]
+  description: >-
+    Endpoints return Etag headers and support conditional PATCH requests via If-Match
+    and If-None-Match, providing optimistic-concurrency control for resource updates.
+    Note: this is concurrency control, not an idempotency-key contract — PUT replaces
+    a full resource (naturally idempotent) but there is no Idempotency-Key header.
+versioning:
+  scheme: 'v{majorVersion}{stabilityLevel}{iterationNumber}'
+  current: v2
+  detail: lifecycle/sensu-lifecycle.yml
+request_limits:
+  max_body_size_mb: 0.512
+response_envelope:
+  core: standard JSON objects
+  enterprise: wrapped-json with a spec wrapper
+  detail: >-
+    Core (core/v2) endpoints return plain JSON resource objects; enterprise APIs use
+    a wrapped-json format that nests the resource under a spec key.
+error_handling:
+  style: standard-http-status
+  content_type: application/json
+  problem_json: false
+  detail: >-
+    Errors use standard HTTP status codes with JSON bodies; Sensu does not publish an
+    RFC 9457 application/problem+json error catalog.

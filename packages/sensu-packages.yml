@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://pkg.go.dev/github.com/sensu/sensu-go
+notes: >-
+  Sensu Go is an open-source Go codebase; the primary first-party library is the
+  sensu-go Go module (agent, backend, cli/sensuctl, and api/core/v2 type
+  definitions). Sensu does not publish language SDK client packages on npm, PyPI,
+  RubyGems, NuGet, Packagist, or crates.io; integration is via the REST API and the
+  sensuctl CLI. The sensuctl binary is distributed as OS packages (apt/yum), Docker
+  images, and release archives (catalogued in cli/sensu-cli.yml).
+packages:
+- language: go
+  registry: pkg.go.dev
+  name: github.com/sensu/sensu-go
+  url: https://pkg.go.dev/github.com/sensu/sensu-go
+  install: go get github.com/sensu/sensu-go
+  official: true
+  source: https://github.com/sensu/sensu-go
+  license: MIT
+  provides:
+  - api/core/v2 type definitions
+  - backend services (API daemon, auth, authorization, datastore)
+  - agent
+  - cli (sensuctl)

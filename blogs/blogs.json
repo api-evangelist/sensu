@@ -1,0 +1,14 @@
+{
+  "repo": "sensu",
+  "feeds": [
+    {
+      "source": "https://discourse.sensu.io",
+      "feed_url": "https://discourse.sensu.io",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-07-25T15:00:33Z"
+}

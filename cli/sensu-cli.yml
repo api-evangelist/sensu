@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/sensuctl/
+cli:
+  name: sensuctl
+  description: >-
+    sensuctl is the first-party command-line interface for managing a Sensu Go
+    cluster and its observability resources. It is installed as part of the Sensu
+    package and communicates with the backend REST API.
+  install:
+    methods:
+    - OS packages (apt / yum) as part of the Sensu install
+    - Docker image
+    - release archives
+    docs: https://docs.sensu.io/sensu-go/latest/operations/deploy-sensu/install-sensu/#install-sensuctl
+  configuration:
+    interactive: sensuctl configure
+    non_interactive: sensuctl configure -n --url <backend> --username <user> --password <pass>
+    auth: username/password or OIDC
+  command_groups:
+  - name: asset
+    summary: Manage plugins and integrations (assets)
+  - name: check
+    summary: Configure monitoring checks
+  - name: entity
+    summary: Manage monitored resources (entities)
+  - name: event
+    summary: View and manipulate events
+  - name: filter
+    summary: Create event filters
+  - name: handler
+    summary: Configure event handlers
+  - name: hook
+    summary: Manage check hooks
+  - name: mutator
+    summary: Transform event data
+  - name: pipeline
+    summary: Define observability processing pipelines
+  - name: role
+    summary: Control access permissions (role / role-binding)
+  - name: user
+    summary: Manage user accounts (create, change-password, reset-password)
+  - name: namespace
+    summary: Organize resources into namespaces
+  - name: cluster
+    summary: View cluster information
+  - name: config
+    summary: Modify sensuctl settings and output format
+  - name: create
+    summary: Create resources from YAML/JSON
+  - name: delete
+    summary: Delete resources
+  - name: edit
+    summary: Edit resources in place
+  key_flows:
+  - Initial setup via sensuctl configure (interactive auth, namespace + output format)
+  - Declarative resource management (create/delete/edit from YAML/JSON)
+  - Output in tabular, YAML, or JSON formats
+  - Shell tab-completion for bash/zsh

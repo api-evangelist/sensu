@@ -1,0 +1,80 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/api/
+notes: >-
+  Entity-relationship model derived from the Sensu Go core/v2 API resource surface
+  (no OpenAPI is published, so relationships are read from the documented resources
+  rather than $ref graph). Nearly all resources are namespace-scoped; cluster-wide
+  resources (cluster roles, cluster role bindings, users, namespaces) are not.
+entities:
+- name: Namespace
+  scope: cluster
+  description: Logical partition that scopes most other resources.
+- name: Check
+  scope: namespace
+  description: Scheduled monitoring check definition; produces events.
+  references:
+  - {to: Asset, via: runtime_assets, cardinality: has_many}
+  - {to: Hook, via: check_hooks, cardinality: has_many}
+  - {to: Pipeline, via: pipelines, cardinality: has_many}
+- name: Event
+  scope: namespace
+  description: Observation produced by a check or agent; carries status and metrics.
+  references:
+  - {to: Check, via: check, cardinality: belongs_to}
+  - {to: Entity, via: entity, cardinality: belongs_to}
+- name: Entity
+  scope: namespace
+  description: A monitored resource (server, container, service, function, proxy).
+- name: Handler
+  scope: namespace
+  description: Action taken on events (notify, page, store).
+  references:
+  - {to: Filter, via: filters, cardinality: has_many}
+  - {to: Mutator, via: mutator, cardinality: has_one}
+- name: Filter
+  scope: namespace
+  description: Predicate that includes/excludes events from handling.
+- name: Mutator
+  scope: namespace
+  description: Transforms event data before handling.
+- name: Hook
+  scope: namespace
+  description: Command executed in response to a check result for context capture.
+- name: Pipeline
+  scope: namespace
+  description: Observability workflow chaining filters, mutators, and handlers.
+  references:
+  - {to: Filter, via: workflows.filters, cardinality: has_many}
+  - {to: Mutator, via: workflows.mutator, cardinality: has_one}
+  - {to: Handler, via: workflows.handler, cardinality: has_one}
+- name: Asset
+  scope: namespace
+  description: Shareable, versioned plugin/dependency artifact used by checks and handlers.
+- name: Silenced
+  scope: namespace
+  description: Silencing entry that suppresses handler execution for matching events.
+- name: Role
+  scope: namespace
+  description: Set of RBAC rules (verbs on resource types).
+- name: RoleBinding
+  scope: namespace
+  description: Binds a Role to users/groups.
+  references:
+  - {to: Role, via: role_ref, cardinality: belongs_to}
+- name: ClusterRole
+  scope: cluster
+  description: Cluster-wide RBAC rules.
+- name: ClusterRoleBinding
+  scope: cluster
+  description: Binds a ClusterRole to users/groups.
+  references:
+  - {to: ClusterRole, via: role_ref, cardinality: belongs_to}
+- name: User
+  scope: cluster
+  description: Local user account for authentication.
+- name: APIKey
+  scope: cluster
+  description: Persistent UUID key mapped to a user for API authentication.
+  references:
+  - {to: User, via: username, cardinality: belongs_to}

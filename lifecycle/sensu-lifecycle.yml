@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/api/
+versioning:
+  scheme: 'v{majorVersion}{stabilityLevel}{iterationNumber}'
+  current: v2
+  stability: stable
+  docs: https://docs.sensu.io/sensu-go/latest/api/
+  detail: >-
+    The API uses semantic versioning of the form v{majorVersion}{stabilityLevel}{iterationNumber}.
+    Core resources are served under core/v2 (stable). Alpha and beta APIs offer no
+    stability guarantees; backward compatibility is guaranteed only for stable versions.
+compatibility:
+  backward_compatible_for: [stable]
+  guarantee: >-
+    Backward compatibility is guaranteed for stable API versions; alpha and beta APIs
+    may change without notice.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No dedicated deprecation-policy page or RFC 8594 Sunset/Deprecation header support
+    was found; lifecycle is governed by the stable/alpha/beta stability levels above.
+release_notes: https://docs.sensu.io/sensu-go/latest/release-notes/
+current_release: 6.14.2
+status_page: null
+sla:
+  detail: >-
+    Support-response SLAs are tied to commercial plans (Pro: 6-hour response;
+    Enterprise: 3-hour response) per https://sensu.io/pricing; no public uptime SLA is
+    published for the self-hosted backend.

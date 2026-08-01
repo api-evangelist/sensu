@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sensu.io/sensu-go/latest/api/
+docs: https://docs.sensu.io/sensu-go/latest/api/#authenticate-with-the-authentication-api
+summary:
+  types: [http, apiKey, openIdConnect]
+  api_key_in: [header]
+  http_schemes: [bearer]
+  oidc: true
+  rbac: true
+  unauthenticated_endpoints: [/auth, /health, /license, /metrics, /ready, /version]
+schemes:
+- name: JWT Access Token
+  type: http
+  scheme: bearer
+  description: >-
+    Obtain a JWT access token by POSTing credentials to the /auth endpoint. Access
+    tokens are short-lived (~15 minutes) and are refreshed via /auth/token using the
+    accompanying refresh token. Presented as Authorization: Bearer <token>.
+  token_url: /auth
+  refresh_url: /auth/token
+  ttl: ~15m
+- name: API Key
+  type: apiKey
+  in: header
+  parameter_name: Authorization
+  format: 'Key <uuid>'
+  description: >-
+    Persistent API keys are UUIDs mapped to a Sensu username, created via the
+    core/v2 apikeys resource. Presented as Authorization: Key <uuid> and do not
+    expire on the 15-minute token cycle.
+  example: 'Authorization: Key 7f63b5bc-41f4-4b3e-b59b-5431afd7e6a2'
+- name: OIDC Single Sign-On
+  type: openIdConnect
+  description: >-
+    Operators can authenticate to the backend and sensuctl via OIDC providers
+    (e.g. Microsoft Entra ID) for single sign-on. Configured as a Sensu auth
+    provider resource.
+authorization:
+  model: RBAC
+  description: >-
+    Access is governed by role-based access control: roles / cluster roles define
+    verbs on resource types, bound to users or groups via role bindings /
+    cluster role bindings, scoped by namespace. Sensu uses RBAC rather than OAuth2
+    scopes, so no OAuth scope reference exists (scopes/ artifact intentionally omitted).

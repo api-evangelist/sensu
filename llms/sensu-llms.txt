@@ -1,0 +1,34 @@
+# Sensu
+
+> Sensu (Sensu by Sumo Logic) is an observability pipeline that delivers monitoring as code across multi-cloud and hybrid environments. Sensu Go exposes a backend REST API (core/v2 plus enterprise APIs) and the sensuctl CLI for managing checks, events, entities, filters, handlers, mutators, pipelines, assets, silences, RBAC, and users, integrating with Nagios, StatsD, Telegraf, and Prometheus from bare metal to Kubernetes.
+
+## APIs
+
+- [Sensu Go Backend REST API](https://docs.sensu.io/sensu-go/latest/api/): Resource-oriented JSON REST API under /api/core/v2/namespaces/<namespace>; JWT access tokens or persistent API keys; limit/continue pagination; labelSelector/fieldSelector filtering; Etag conditional requests.
+
+## Docs
+
+- [Documentation](https://docs.sensu.io/sensu-go/latest/)
+- [API Reference](https://docs.sensu.io/sensu-go/latest/api/)
+- [Getting Started / Install](https://docs.sensu.io/sensu-go/latest/operations/deploy-sensu/install-sensu/)
+- [sensuctl CLI](https://docs.sensu.io/sensu-go/latest/sensuctl/)
+- [Release Notes](https://docs.sensu.io/sensu-go/latest/release-notes/)
+- [Pricing](https://sensu.io/pricing)
+- [Community Forum](https://discourse.sensu.io)
+
+## Artifacts
+
+- [Authentication profile](authentication/sensu-authentication.yml): JWT bearer, API key, OIDC SSO, RBAC.
+- [API conventions](conventions/sensu-conventions.yml): pagination, filtering, conditional requests, versioning.
+- [CLI surface](cli/sensu-cli.yml): sensuctl command groups.
+- [Packages](packages/sensu-packages.yml): official sensu-go Go module.
+- [Lifecycle](lifecycle/sensu-lifecycle.yml): versioning and stability levels.
+- [Changelog](changelog/sensu-changelog.yml): recent Sensu Go releases.
+- [Conformance](conformance/sensu-conformance.yml): standards support.
+- [Data model](data-model/sensu-data-model.yml): core/v2 entity graph.
+- [MCP candidate tools](mcp/sensu-mcp.yml): derived tool list.
+
+## Source
+
+- [GitHub organization](https://github.com/sensu)
+- [sensu-go repository](https://github.com/sensu/sensu-go)
