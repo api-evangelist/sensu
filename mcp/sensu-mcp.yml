@@ -2,11 +2,9 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: https://docs.sensu.io/sensu-go/latest/api/
-notes: >-
-  No official hosted/remote MCP server was found for Sensu. This is a CANDIDATE tool
-  list derived from the documented Sensu Go core/v2 REST resources (CRUD per resource
-  type). Not a published server. Auth would be JWT bearer or API key
-  (Authorization: Key <uuid>); all resource tools are namespace-scoped.
+notes: 'No official hosted/remote MCP server was found for Sensu. This is a CANDIDATE tool list derived
+  from the documented Sensu Go core/v2 REST resources (CRUD per resource type). Not a published server.
+  Auth would be JWT bearer or API key (Authorization: Key <uuid>); all resource tools are namespace-scoped.'
 server:
   name: sensu
   transport: http
@@ -14,43 +12,49 @@ server:
 tools:
 - name: list_checks
   description: List monitoring checks in a namespace
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/checks'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/checks
 - name: get_check
   description: Get a check by name
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/checks/{check}'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/checks/{check}
 - name: create_check
   description: Create or update a check
-  source_operation: 'PUT /api/core/v2/namespaces/{namespace}/checks/{check}'
+  source_operation: PUT /api/core/v2/namespaces/{namespace}/checks/{check}
 - name: list_events
   description: List observability events in a namespace
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/events'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/events
 - name: get_event
   description: Get an event for an entity/check
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/events/{entity}/{check}'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/events/{entity}/{check}
 - name: list_entities
   description: List monitored entities
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/entities'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/entities
 - name: list_handlers
   description: List event handlers
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/handlers'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/handlers
 - name: list_filters
   description: List event filters
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/filters'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/filters
 - name: list_mutators
   description: List event mutators
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/mutators'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/mutators
 - name: list_pipelines
   description: List observability pipelines
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/pipelines'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/pipelines
 - name: list_assets
   description: List shareable assets
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/assets'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/assets
 - name: list_silenced
   description: List silencing entries
-  source_operation: 'GET /api/core/v2/namespaces/{namespace}/silenced'
+  source_operation: GET /api/core/v2/namespaces/{namespace}/silenced
 - name: create_silenced
   description: Create a silencing entry
-  source_operation: 'POST /api/core/v2/namespaces/{namespace}/silenced'
+  source_operation: POST /api/core/v2/namespaces/{namespace}/silenced
 - name: health
   description: Check backend health (unauthenticated)
-  source_operation: 'GET /health'
+  source_operation: GET /health
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census
