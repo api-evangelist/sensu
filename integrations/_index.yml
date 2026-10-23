@@ -158,3 +158,37 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: sensu-arch-user-repository-aur
+  label: Arch User Repository (AUR)
+  partner_name: Arch User Repository (AUR)
+  category: official CLI (Arch User Repository (AUR))
+  type: register
+  channel: package-registry
+  evidence: https://aur.archlinux.org/packages/sensu-go-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Arch User Repository (AUR) (public package index)
+    spec_file: null
+    packages:
+    - name: sensu-go-cli
+      kind: aur
+      version: 6.15.0-1
+      released: '2026-10-15'
+      released_field: AUR LastModified
+      out_of_date: false
+      lapsed: false
+      page: https://aur.archlinux.org/packages/sensu-go-cli
+      upstream: https://sensu.io
+      cli: 'AUR description: Sensu Go CLI'
+      repo_leg: domain:sensu.io
+      publisher_leg: artifact-domain:sensu.io
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool packaged for Arch Linux (community-maintained PKGBUILD whose
+      upstream and source artifact are the provider''s): distribution, not an integration; lapsed = flagged out-of-date
+      or not updated in 24 months'
+    detected_by: sweep-aur-vendor-cli-packages.py
+    detected: '2026-10-23'
+  status: not-a-workflow
+  arazzo: null
